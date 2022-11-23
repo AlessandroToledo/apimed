@@ -49,4 +49,19 @@ public class Event {
     this.doctor = doctor;
   }
 
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public void setDatetime(Date datetime) {
+    this.datetime = datetime;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public void setMedicalBranch(String medicalBranch) {
+    this.medicalBranch = medicalBranch;
+  }
 }

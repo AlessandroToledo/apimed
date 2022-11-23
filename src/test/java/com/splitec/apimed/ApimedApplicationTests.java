@@ -63,7 +63,7 @@ class ApimedApplicationTests {
     event.setStart(start);
 
     // Fim
-    DateTime endDateTime = new DateTime("2022-11-24T10:00:00");
+    DateTime endDateTime = new DateTime(start.getDateTime().getValue() + 30L * 60L * 1000L);
     EventDateTime end = new EventDateTime()
         .setDateTime(endDateTime);
     event.setEnd(end);

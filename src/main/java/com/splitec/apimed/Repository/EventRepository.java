@@ -7,6 +7,7 @@ import com.google.api.client.http.BasicAuthentication;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.calendar.Calendar;
+import com.splitec.apimed.Pojos.Event;
 import org.json.JSONObject;
 
 import java.io.ByteArrayInputStream;
@@ -15,6 +16,8 @@ import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 
 public class EventRepository {
+
+  private static Event event ;
 
   public String listCalendars() throws GeneralSecurityException, IOException {
 

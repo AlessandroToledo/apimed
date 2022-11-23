@@ -22,12 +22,6 @@ public class EventController extends EventService {
 
   @Autowired
 
-  @GetMapping(value = "/list")
-  public ResponseEntity<User> listEvents() {
-    allEvents();
-    return new ResponseEntity<>(null, HttpStatus.OK);
-  }
-
   @GetMapping(value = "/{id}")
   public ResponseEntity<User> eventById(@PathVariable String id) {
     retrieveEvent(id);
@@ -46,13 +40,4 @@ public class EventController extends EventService {
     return new ResponseEntity<>(HttpStatus.OK);
   }
 
-  @PutMapping(value = "/{id}")
-  public ResponseEntity modifyEvent(@PathVariable String id, @RequestBody String body) {
-    String response = updateEvent(body, id);
-    JSONObject responseJson = new JSONObject(response);
-    String name = responseJson.getString("nome");
-    Event resp = new Event();
-    resp.setDoctor(name);
-    return new ResponseEntity(resp, HttpStatus.OK);
-  }
 }
