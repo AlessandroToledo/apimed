@@ -14,15 +14,22 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventRepository {
 
-  private static Event event ;
+  private static List<Event> event = new ArrayList<>();
 
   public String listCalendars() throws GeneralSecurityException, IOException {
 
 
     boolean t = true;
     return "";
+  }
+
+  public String addCalendar(Event event)
+  {
+    return "Created: ";
   }
 }

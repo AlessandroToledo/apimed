@@ -13,13 +13,16 @@ public class Doctor {
 
   private String function;
 
+  private int id;
+
   public Doctor() {
   }
 
-  public Doctor(String name, String email, String function) {
+  public Doctor(String name, String email, String function, int id) {
     this.name = name;
     this.email = email;
     this.function = function;
+    this.id = id;
   }
 
   public String getEmail() {
@@ -34,6 +37,8 @@ public class Doctor {
     return this.function;
   }
 
+  public int getId() { return this.id; }
+
   public void setName(String name) {
     this.name = name;
   }
@@ -45,4 +50,6 @@ public class Doctor {
   public void setFunction(String function) {
     this.function = function;
   }
+
+  public void setId(int id) { this.id = id; }
 }
