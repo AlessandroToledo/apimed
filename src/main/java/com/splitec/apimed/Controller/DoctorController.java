@@ -1,51 +1,53 @@
 package com.splitec.apimed.Controller;
 
-import com.splitec.apimed.Pojos.User;
 import com.splitec.apimed.Service.DoctorService;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/doctor")
-public class DoctorController extends DoctorService {
+public class DoctorController {
 
-    @Autowired
+  DoctorService doctorService = new DoctorService();
 
-    @GetMapping(value = "/list")
-    public ResponseEntity<?> listDoctor() {
-        return new ResponseEntity<>(getDoctors(), HttpStatus.OK);
-    }
+  @GetMapping(value = "/list")
+  public ResponseEntity<?> listDoctor() {
+    return new ResponseEntity<>(doctorService.getAllDoctors(), HttpStatus.OK);
+  }
 
-    @PostMapping(value = "/add")
-    public ResponseEntity createDoctor(@RequestBody String body) {
-        JSONObject payload = new JSONObject(body);
-        String docName = payload.getString("name");
-        String docEmail = payload.getString("email");
-        String docFunction = payload.getString("function");
-        String response = addDoctor(docName, docEmail, docFunction);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
+  @PostMapping(value = "/add")
+  public ResponseEntity createDoctor(@RequestBody String body) {
+    JSONObject payload = new JSONObject(body);
+    String docName = payload.getString("name");
+    String docEmail = payload.getString("email");
+    String docFunction = payload.getString("function");
+    String response = doctorService.addDoctor(docName, docEmail, docFunction);
+    return new ResponseEntity<>(response, HttpStatus.CREATED);
+  }
 
-    @DeleteMapping(value = "/remove/{id}")
-    public ResponseEntity deleteDoctor(@PathVariable int id) {
-        return new ResponseEntity<>(removeDoctor(id), HttpStatus.OK);
-    }
+  @DeleteMapping(value = "/remove/{id}")
+  public ResponseEntity deleteDoctor(@PathVariable int id) {
+    return new ResponseEntity<>(doctorService.removeDoctor(id), HttpStatus.OK);
+  }
 
-    @PutMapping(value = "/update/{id}")
-    public ResponseEntity<?> updateDoctor(@RequestBody String body, @PathVariable int id) {
-        JSONObject payload = new JSONObject(body);
-        String docName = payload.getString("name");
-        String docEmail = payload.getString("email");
-        String docFunction = payload.getString("function");
-        String response = alterDoctor(docName, docEmail, docFunction, id);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
+  @PutMapping(value = "/update/{id}")
+  public ResponseEntity<?> updateDoctor(@RequestBody String body, @PathVariable int id) {
+    JSONObject payload = new JSONObject(body);
+    String docName = payload.getString("name");
+    String docEmail = payload.getString("email");
+    String docFunction = payload.getString("function");
+    String response = doctorService.alterDoctor(docName, docEmail, docFunction, id);
+    return new ResponseEntity<>(response, HttpStatus.OK);
+  }
 
 }
