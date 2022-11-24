@@ -38,9 +38,15 @@ public class DoctorRepository {
     for (int i = 0; i < doctors.size(); i++) {
       if (doctors.get(i).getId() == id) {
         Doctor doctor = doctors.get(i);
-        doctor.setName(docName);
-        doctor.setName(docEmail);
-        doctor.setName(docFunction);
+        if(docName!=""){
+          doctor.setName(docName);
+        }
+        if(docEmail!="") {
+          doctor.setEmail(docEmail);
+        }
+        if(docFunction!="") {
+          doctor.setFunction(docFunction);
+        }
       }
     }
     return "UPDATED";
