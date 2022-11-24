@@ -38,13 +38,13 @@ public class DoctorRepository {
     for (int i = 0; i < doctors.size(); i++) {
       if (doctors.get(i).getId() == id) {
         Doctor doctor = doctors.get(i);
-        if(docName!=""){
+        if (docName != "") {
           doctor.setName(docName);
         }
-        if(docEmail!="") {
+        if (docEmail != "") {
           doctor.setEmail(docEmail);
         }
-        if(docFunction!="") {
+        if (docFunction != "") {
           doctor.setFunction(docFunction);
         }
       }

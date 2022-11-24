@@ -35,10 +35,10 @@ public class EventService extends EventRepository {
   public EventService() throws GeneralSecurityException, IOException {
   }
 
-  public com.google.api.services.calendar.model.Event addEvent(String title, String description, String date, String customerEmail) throws IOException {
+  public com.google.api.services.calendar.model.Event addEvent(String doctorName, String description, String date, String customerEmail) throws IOException {
 
     Event event = new Event()
-        .setSummary(title)
+        .setSummary("")
         .setLocation(Constants.LOCATION)
         .setDescription(description);
 
@@ -54,7 +54,7 @@ public class EventService extends EventRepository {
 
     EventAttendee[] attendees = new EventAttendee[]{
         new EventAttendee().setEmail(customerEmail),
-        new EventAttendee().setEmail("alematheustoledo@gmail.com")
+        new EventAttendee().setEmail("")
     };
     event.setAttendees(Arrays.asList(attendees));
     return insertEvent(calendarId, event, service);

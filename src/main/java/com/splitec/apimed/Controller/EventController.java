@@ -32,11 +32,11 @@ public class EventController {
   @PostMapping(value = "/add")
   public ResponseEntity createEvent(@RequestBody String body) throws IOException {
     JSONObject payload = new JSONObject(body);
-    String title = (payload.has("title")) ? payload.getString("title") : "";
+    String doctorName = (payload.has("doctorName")) ? payload.getString("doctorName") : "";
     String desc = (payload.has("description")) ? payload.getString("description") : "";
     String date = (payload.has("date")) ? payload.getString("date") : "";
     String email = (payload.has("customerEmail")) ? payload.getString("customerEmail") : "";
-    return new ResponseEntity<>(eventService.addEvent(title, desc, date, email), HttpStatus.CREATED);
+    return new ResponseEntity<>(eventService.addEvent(doctorName, desc, date, email), HttpStatus.CREATED);
   }
 
   @DeleteMapping(value = "/{id}")
