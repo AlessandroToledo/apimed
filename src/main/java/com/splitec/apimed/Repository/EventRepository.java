@@ -1,35 +1,25 @@
 package com.splitec.apimed.Repository;
 
-import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.BasicAuthentication;
-import com.google.api.client.http.HttpRequestInitializer;
-import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.calendar.Calendar;
-import com.splitec.apimed.Pojos.Event;
-import org.json.JSONObject;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class EventRepository {
 
-  private static List<Event> event = new ArrayList<>();
-
-  public String listCalendars() throws GeneralSecurityException, IOException {
-
-
-    boolean t = true;
-    return "";
+  public com.google.api.services.calendar.model.Event getEvent(String calendarId, String eventId,
+                                                                  Calendar service) throws IOException {
+    return service.events().get(calendarId, eventId).execute();
   }
 
-  public String addCalendar(Event event)
-  {
-    return "Created: ";
+  public String deleteEvent(String calendarId, String eventId,
+                                                               Calendar service) throws IOException {
+    service.events().delete(calendarId, eventId).execute();
+    return "DELETED";
+  }
+
+  public com.google.api.services.calendar.model.Event insertEvent(String calendarId,
+                                                                  com.google.api.services.calendar.model.Event event,
+                                                                  Calendar service) throws IOException {
+    return service.events().insert(calendarId, event).execute();
   }
 }
