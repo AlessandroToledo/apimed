@@ -17,7 +17,7 @@
 
 ## Utilização
 
-Para testar use collection do postman, primeiramente criando um doutor, em seguida crie um evento fornecendo o nome do doutor previamente cadastrado.
+Para testar use collection do postman, primeiramente criando um doutor, em seguida crie um evento fornecendo o nome do doutor previamente cadastrado, utilize seu próprio email na criação do evento para ele ser adicionado a sua google agenda.
 
 caso de duvidar contactar alematheustoledo@gmail.com
 
