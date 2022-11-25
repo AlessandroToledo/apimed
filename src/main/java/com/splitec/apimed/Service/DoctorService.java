@@ -31,4 +31,5 @@ public class DoctorService extends DoctorRepository {
   public List<Doctor> getAllDoctors() {
     return listDoc();
   }
+
 }

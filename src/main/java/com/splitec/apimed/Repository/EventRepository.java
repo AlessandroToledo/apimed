@@ -4,7 +4,7 @@ import com.google.api.services.calendar.Calendar;
 
 import java.io.IOException;
 
-public class EventRepository {
+public class EventRepository extends DoctorRepository {
 
   public com.google.api.services.calendar.model.Event getEvent(String calendarId, String eventId,
                                                                   Calendar service) throws IOException {
@@ -22,4 +22,5 @@ public class EventRepository {
                                                                   Calendar service) throws IOException {
     return service.events().insert(calendarId, event).execute();
   }
+
 }

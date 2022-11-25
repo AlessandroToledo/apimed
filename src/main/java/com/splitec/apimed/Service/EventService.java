@@ -38,7 +38,7 @@ public class EventService extends EventRepository {
   public com.google.api.services.calendar.model.Event addEvent(String doctorName, String description, String date, String customerEmail) throws IOException {
 
     Event event = new Event()
-        .setSummary("")
+        .setSummary(getDocByName(doctorName).getFunction())
         .setLocation(Constants.LOCATION)
         .setDescription(description);
 
@@ -47,14 +47,14 @@ public class EventService extends EventRepository {
         .setDateTime(startDateTime);
     event.setStart(start);
 
-    DateTime endDateTime = new DateTime(start.getDateTime().getValue() + 30L * 60L * 1000L);
+    DateTime endDateTime = new DateTime(start.getDateTime().getValue() + 60L * 60L * 1000L);
     EventDateTime end = new EventDateTime()
         .setDateTime(endDateTime);
     event.setEnd(end);
 
     EventAttendee[] attendees = new EventAttendee[]{
         new EventAttendee().setEmail(customerEmail),
-        new EventAttendee().setEmail("")
+        new EventAttendee().setEmail(getDocByName(doctorName).getEmail())
     };
     event.setAttendees(Arrays.asList(attendees));
     return insertEvent(calendarId, event, service);

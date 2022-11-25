@@ -25,6 +25,16 @@ public class DoctorRepository {
     return doctor;
   }
 
+  public Doctor getDocByName(String name){
+    Doctor doctor = new Doctor();
+    for (int i = 0; i < doctors.size(); i++) {
+      if (doctors.get(i).getName().equals(name)) {
+        doctor = doctors.get(i);
+      }
+    }
+    return doctor;
+  }
+
   public String removeDoc(int id) {
     for (int i = 0; i < doctors.size(); i++) {
       if (doctors.get(i).getId() == id) {
